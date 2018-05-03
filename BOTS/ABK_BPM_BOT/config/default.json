@@ -1,0 +1,24 @@
+{
+  "hello" : "Здравствуйте",
+  "main_menu_txt" : "выберите пункт меню:",
+  "developing" : "Данный раздел в разработке.",
+  "alfa_site_url" : "https://www.alfabank.kz/",
+  "alfa_site_txt" : "Альфа-Банк",
+
+  "main_menu_buttons" : [
+    [{ "text": "Мои активные задачи",       "callback_data": "to_my_active_tasks_list"}],
+    [{ "text": "Мои завершенные задачи",    "callback_data": "to_my_closed_tasks_list" }],
+    [{ "text": "Поиск заявки по номеру",  "callback_data": "to_find_process_by_instanse_id" }]
+  ],
+
+  "search_menu_buttons" : [
+    [{ "text": "Поиск",       "callback_data": "find_process_by_instanse_id","switch_inline_query_current_chat" : "Введите номер заявки:" }],
+    [{ "text": "<< Назад",  "callback_data": "to_main_menu" }]
+  ],
+
+  "alfa_site_url_buttons" : [
+    [{ "text": "Альфа-Банк", "url": "https://www.alfabank.kz/" }],
+    [{ "text": "<< Назад",  "callback_data": "to_main_menu" }]
+  ]
+
+}

@@ -1,0 +1,110 @@
+0) Зашифровать токен и брать через конфиг сервер Щапава
+1) Перед показом пункта меню взять айдишку юзера и сверить с базой
+2) Логирование
+3) если нет в бд - то место меню показать айди и попросить зарегиться
+=========================
+https://core.telegram.org/bots/api#inlinekeyboardmarkup
+https://core.telegram.org/bots/api#inlinekeyboardbutton
+https://core.telegram.org/bots/api/#keyboardbutton
+https://github.com/yagop/node-telegram-bot-api/issues/109
+https://core.telegram.org/bots/api#updating-messages
+https://github.com/yagop/node-telegram-bot-api/blob/master/doc/api.md
+
+//bot.sendMessage(chatId, '<b>' + config.get('developing') + '</b> \n <a href="' + config.get('alfa_site_url') + '">' + config.get('alfa_site_txt') + '</a>', {parse_mode : "HTML"});
+
+var options = {
+  parse_mode: 'Markdown',
+  disable_web_page_preview: true,
+  reply_markup: createCinemaListInlineKeyboardMarkup(cinemas)
+};
+bot.sendMessage(msg.chat.id, createCinemaListMarkup(cinemas), options);
+
+// . . .
+
+function createCinemaListInlineKeyboardMarkup (cinemas) {
+  return JSON.stringify({
+    inline_keyboard: cinemas.map(function (cinema) {
+      return [{
+        text: `${cinema.brand} ${cinema.name}`,
+        callback_data: `${cinema.source}:${cinema.code}:${cinema.area}:${cinema.groupnum}`
+      }];
+    })
+  });
+}
+
+данные
+
+{ id: '830086907287462491',
+  from:
+   { id: 193269668,
+     is_bot: false,
+     first_name: 'Yerkebulan',
+     last_name: 'KZ',
+     language_code: 'ru' },
+  message:
+   { message_id: 317,
+     from:
+      { id: 448157166,
+        is_bot: true,
+        first_name: 'ALFA-BANK.KZ BPM BOT',
+        username: 'ABK_BPM_BOT' },
+     chat:
+      { id: 193269668,
+        first_name: 'Yerkebulan',
+        last_name: 'KZ',
+        type: 'private' },
+     date: 1516993183,
+     text: 'Выберите пункт меню:' },
+  chat_instance: '-6754959545471637651',
+  data: 'my_active_tasks_list' }
+
+
+Локация
+
+  { message_id: 321,
+    from:
+     { id: 193269668,
+       is_bot: false,
+       first_name: 'Yerkebulan',
+       last_name: 'KZ',
+       language_code: 'ru' },
+    chat:
+     { id: 193269668,
+       first_name: 'Yerkebulan',
+       last_name: 'KZ',
+       type: 'private' },
+    date: 1516993828,
+    location: { latitude: 43.231137, longitude: 76.748538 } }
+
+Контакт
+{ message_id: 329,
+  from:
+   { id: 193269668,
+     is_bot: false,
+     first_name: 'Yerkebulan',
+     last_name: 'KZ',
+     language_code: 'ru' },
+  chat:
+   { id: 193269668,
+     first_name: 'Yerkebulan',
+     last_name: 'KZ',
+     type: 'private' },
+  date: 1516994077,
+  contact:
+   { phone_number: '+77754179309',
+     first_name: 'Баня',
+     last_name: 'Іргелі' } }
+
+     /*
+     bot.on('location', function (msg) {
+       console.log(msg);
+       var chatId = getChatId(msg);
+       bot.sendMessage(chatId, 'Location was got.');
+     });
+
+     bot.on('contact', function (msg) {
+       console.log(msg);
+       var chatId = getChatId(msg);
+       bot.sendMessage(chatId, 'Contact was got.');
+     });
+     */
